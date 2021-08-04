@@ -1,0 +1,73 @@
+  
+      <mat-card-actions style="text-align: right;">
+        <button mat-raised-button routerLink="addproduct">
+            <mat-icon aria-hidden="false" aria-label="add_circle_outline">add_circle_outline</mat-icon>
+            Products
+        </button>
+      </mat-card-actions>
+
+      <div style="float: right;" appGrid columns=".1fr .7fr">
+        <mat-form-field appearance="outline">
+        <mat-label>Search</mat-label>
+        <input matInput type="text" [(ngModel)]="value" #search (keyup)='onSearchKeyUp(search)'>
+        <mat-hint>Min 20 characters</mat-hint>
+    </mat-form-field>
+    </div>
+  
+      <div class="mat-elevation-z8">
+  
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort (matSortChange)="onMatSortChange()">
+  
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+          </ng-container>
+  
+          <!-- Product Name Column -->
+          <ng-container matColumnDef="product_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</th>
+            <td mat-cell *matCellDef="let element">{{element.product_name}}</td>
+          </ng-container>
+  
+          <!-- Seller Column -->
+          <ng-container matColumnDef="seller">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Seller</th>
+            <td mat-cell *matCellDef="let element">{{element.seller}}</td>
+          </ng-container>
+  
+          <!-- Description Column -->
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+            <td mat-cell *matCellDef="let element">{{element.description}}</td>
+          </ng-container>
+  
+          <!-- Price Column -->
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+            <td mat-cell *matCellDef="let element">{{element.price}}</td>
+          </ng-container>
+  
+
+  
+  
+          <!-- action Column -->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+            <td mat-cell *matCellDef="let element">
+  
+              <button mat-raised-button class="mat-raised-button"
+                (click)="editproduct(element.id)">Update</button>
+              <button mat-raised-button class="mat-raised-button" (click)="deleteproduct(element.id)">Delete</button>
+  
+            </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          
+        </table>
+  
+        <mat-paginator #scheduledOrdersPaginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+
+      </div>

@@ -1,0 +1,40 @@
+<div class="mat-card-wrraper">
+    <mat-card>
+        <div>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+                <h3 class="h3 mb-3 font-weight-normal text-center">SignIn </h3>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput placeholder="Email" formControlName="email">
+
+                    <mat-error
+                    *ngIf="loginForm.controls['email'].hasError('email') && !loginForm.controls['email'].hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+                  
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+
+                    <mat-label>password</mat-label>
+                    <input type="password" matInput formControlName="password">
+
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                    Password is <strong>required</strong>
+                </mat-error>
+                   
+                </mat-form-field>
+
+
+                <button  mat-raised-button>Login</button>
+
+            </form>
+
+
+        </div>
+
+    </mat-card>
+</div>

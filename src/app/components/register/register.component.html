@@ -1,0 +1,73 @@
+<!-- signup form -->
+<div class="mat-card-wrraper">
+
+    <mat-card style="width: 30%;">
+        <div>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+                <h3 class="h3 mb-3 font-weight-normal text-center">Register Form </h3>
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="First Name" formControlName="first_name">
+                    
+                    <mat-error
+                    *ngIf="registerForm.controls['first_name'].hasError('pattern') && !registerForm.controls['first_name'].hasError('required')">
+                    Only Alphabet allowed.
+                </mat-error>
+                <mat-error *ngIf="registerForm.controls['first_name'].hasError('required')">
+                    First Name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Last Name" formControlName="last_name">
+                
+                <mat-error
+                *ngIf="registerForm.controls['last_name'].hasError('pattern') && !registerForm.controls['last_name'].hasError('required')">
+                Only Alphabet allowed.
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls['last_name'].hasError('required')">
+                Last Name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Email" formControlName="email">
+
+            <mat-error
+            *ngIf="registerForm.controls['email'].hasError('email') && !registerForm.controls['email'].hasError('required')">
+            Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
+            Email is <strong>required</strong>
+        </mat-error>
+           
+        </mat-form-field>
+
+                <mat-form-field appearance="outline">
+
+                    <mat-label>password</mat-label>
+                    <input type="password" matInput formControlName="password">
+
+                <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
+                    Password is <strong>required</strong>
+                </mat-error>
+                  
+                </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Role</mat-label>
+            <mat-select>
+              <mat-option [value]="user" *ngFor="let user of User">{{user}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+        <button mat-raised-button>Register</button>
+  
+      </form>
+        </div>
+    </mat-card>
+  </div>
