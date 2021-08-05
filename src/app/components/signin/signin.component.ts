@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -11,6 +13,7 @@ export class SigninComponent implements OnInit {
 
   loginForm: FormGroup;
   errors = null;
+  submitted = false;
 
 
   constructor( public router: Router, public fb: FormBuilder) {
@@ -25,8 +28,20 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit(){
-    
-    this.router.navigate(['/products']);
+
+    this.submitted = true;
+    if(!this.loginForm.valid) {
+      alert('Please enter the valid data to login!')
+    } else {
+      console.log(this.loginForm.value)
+      this.router.navigate(['/products']);
+    }
+   
+   
   }
+    
+
+    
+  
 
 }

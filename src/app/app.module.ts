@@ -45,6 +45,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductComponent } from './product/product.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { EditproductComponent } from './editproduct/editproduct.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
@@ -54,7 +56,8 @@ import { EditproductComponent } from './editproduct/editproduct.component';
     RegisterComponent,
     ProductComponent,
     AddproductComponent,
-    EditproductComponent
+    EditproductComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +101,8 @@ import { EditproductComponent } from './editproduct/editproduct.component';
     MatTooltipModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    LayoutModule
 
 
   ],

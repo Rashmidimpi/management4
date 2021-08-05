@@ -11,8 +11,9 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   errors = null;
+  submitted = false;
 
-  User: any = ['Buyer', 'Seller'];
+  role: any = ['Buyer', 'Seller'];
 
   constructor( public router: Router, public fb: FormBuilder ) { 
     this.registerForm = this.fb.group({
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
       last_name: ['', [Validators.required,  Validators.pattern('[a-zA-Z ]*')]],
       email: ['',[Validators.required,Validators.email]],
       password: ['',  [Validators.required, Validators.minLength(8)]],
-      role: ['', Validators.required],
+      role: [''],
 
     })
   }
@@ -30,7 +31,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(){
-    
+     this.submitted = true;
+    if(!this.registerForm.valid) {
+      alert('Please fill all the required fields to sign up!')
+    } else {
+      console.log(this.registerForm.value)
+      this.router.navigate(['/signin']);
+    }
+  
   }
 
 }

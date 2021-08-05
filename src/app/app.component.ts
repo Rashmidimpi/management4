@@ -11,10 +11,7 @@ export class AppComponent {
 
   constructor(public router: Router) {
   }
-  logout() {
-    
-    this.router.navigate(['/']);
-  }
+  
 
   ngOnInit(): void {
   }

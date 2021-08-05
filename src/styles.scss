@@ -49,6 +49,16 @@ body {
 
 /* table */
 
+table{
+    border-collapse: collapse !important;
+    border-spacing: 0 8px !important;
+}
+
+td.mat-cell{
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    padding-right: 2px !important;
+}
 
 th.mat-header-cell,
 td.mat-cell,
@@ -73,9 +83,11 @@ a {
 
 .mat-raised-button,
 button {
-    background-color: #0A395A;
+    background-color: #0a395a ;
     color: white;
-    margin: 5px;
+    margin: 10px;
+    justify-content:"space-between";
+   
 }
 
 .mat-header-row th {
@@ -90,17 +102,6 @@ button {
 table {
     width: 100%;
 }
-
-.board-selected,
-.board-selected-clicked {
-    width: 155px;
-    height: 33px;
-    padding-top: 8px;
-    border-radius: 11px;
-    padding-left: 10px;
-}
-
-
 
 .pointer {
     cursor: pointer;
@@ -123,7 +124,7 @@ button .mat-icon {
 .misc-bottom-padding mat-label{margin-right:15px;}
 .mat-radio-label{margin:0 15px 0 0;}
 .title-center{margin:0 auto;}
-.button-wrapper{margin-top:10px;}
+.button-wrapper{margin-top:20px;}
 
 .image-show {
     height: 150px; 
@@ -162,3 +163,29 @@ button .mat-icon {
     margin: auto;
   }
 
+  .mat-raised-button {
+    box-sizing: border-box;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+    min-width: 64px;
+    line-height: 36px;
+    padding: 0 16px;
+    border-radius: 4px;
+    overflow: visible;
+    transform: translate3d(0, 0, 0);
+    transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1),box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 5px;
+}
