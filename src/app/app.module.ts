@@ -47,6 +47,7 @@ import { AddproductComponent } from './addproduct/addproduct.component';
 import { EditproductComponent } from './editproduct/editproduct.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -102,7 +103,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    LayoutModule
+    LayoutModule,
+    HttpClientModule
 
 
   ],

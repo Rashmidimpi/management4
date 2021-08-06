@@ -6,7 +6,7 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item *ngIf="!isSignedIn" routerLink="/signin" routerLinkActive="active" >Log In</a>
-      <a mat-list-item *ngIf="isSignedIn" routerLink="/register" routerLinkActive="active">Signup</a>
+      <a mat-list-item *ngIf="!isSignedIn" routerLink="/register" routerLinkActive="active">Signup</a>
       <a mat-list-item *ngIf="isSignedIn" routerLink="/products" routerLinkActive="active">Products</a>
       <a mat-list-item *ngIf="isSignedIn" (click)="logout()" routerLinkActive="active">Log Out</a>
     </mat-nav-list>

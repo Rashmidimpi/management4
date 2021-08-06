@@ -1,0 +1,43 @@
+{
+  "admin": [
+    {
+      "id": 1,
+      "first_name": "Rashmi",
+      "last_name": "Neha",
+      "email": "rashmi@gmail.com",
+      "password": "nistnist",
+      "password_confirmation": "nistnist"
+    },
+    {
+      "first_name": "Dimpi",
+      "last_name": "Rashmi",
+      "email": "rash@abc.com",
+      "password": "nistnist",
+      "password_confirmation": "nistnist",
+      "id": 2
+    }
+  ],
+  "product": [
+    {
+      "id": 1,
+      "product_name": "Dress",
+      "seller": "Myntra",
+      "description": "White dress",
+      "price": 100
+    },
+    {
+      "product_name": "Milkybar",
+      "seller": "Amazon",
+      "description": "Chocolate",
+      "price": "200.00",
+      "id": 2
+    },
+    {
+      "product_name": "Shoes",
+      "seller": "Myntra",
+      "description": "Black shoe",
+      "price": "300",
+      "id": 3
+    }
+  ]
+}

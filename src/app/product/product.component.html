@@ -57,7 +57,7 @@
             <td mat-cell *matCellDef="let element">
   
               <button mat-raised-button class="mat-raised-button "
-                (click)="editproduct(element.id)">Update</button>
+                (click)="editproduct(element.id,element.product_name,element.seller,element.description,element.price)">Update</button>
               <button mat-raised-button class="mat-raised-button " (click)="deleteproduct(element.id)">Delete</button>
   
             </td>

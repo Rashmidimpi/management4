@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ApihandlerService } from 'src/app/shared/apihandler.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -15,18 +17,16 @@ export class ProductComponent implements OnInit {
   @Input() id: number | undefined ;
   displayedColumns = ['id', 'product_name', 'seller', 'description', 'price', 'action'];
   dataSource = new MatTableDataSource();
-  datalist = [ {'id':1, 'product_name': 'dresses', 'seller': 'Myntra', 'description': 'white dress','price': 100.00},
-  {'id':2, 'product_name': 'shoes', 'seller': 'Flipkart', 'description': 'white shoe','price': 200.00},
-  {'id':3, 'product_name': 'Chocolate', 'seller': 'Amazon', 'description': 'chocolate','price': 300.00}];
+  datalist = [];
   value = '';
   recordFound: boolean = false;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
 
-  constructor( private router: Router, private route: ActivatedRoute) { }
+  constructor( private router: Router, private route: ActivatedRoute, private apiService: ApihandlerService) { }
 
   ngOnInit(): void {
-    this.dataSource.data = this.datalist; 
+    this.getProduct(); 
   }
 
  
@@ -36,14 +36,38 @@ export class ProductComponent implements OnInit {
   }
 
   
-  editproduct(id: number){
+  editproduct(id: number, product_name:any, seller: any, description: any, price: any){
     console.log(id);
     this.router.navigate(['./editproduct'], {relativeTo: this.route, queryParams: {id: id}});
 
   }
 
   deleteproduct(id: number){
+    console.log(id);
 
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.apiService.deleterequest('product/', id).subscribe(response => {
+          console.log(response);
+          this.getProduct()
+          
+          Swal.fire(
+            'Deleted!',
+            'Record has been deleted',
+            'success'
+          )
+        
+        })
+      }
+    })
   }
 
   onSearchKeyUp(search: { value: any; }){
@@ -51,6 +75,18 @@ export class ProductComponent implements OnInit {
     var currentFilter = search.value;
     this.dataSource.filter = currentFilter;
 
+  }
+
+  getProduct(){
+    let url = 'product';
+    this.apiService.getrequest(url).subscribe(response => {
+      console.log(response);
+      this.datalist = response;
+      this.dataSource = new MatTableDataSource(response);
+      console.log(this.dataSource);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    })
   }
 
 }

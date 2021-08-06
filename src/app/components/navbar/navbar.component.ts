@@ -26,10 +26,10 @@ export class NavbarComponent {
   }
 
   logout() {
-    if(this.isSignedIn = false){
+    this.isSignedIn = false
     
     this.router.navigate(['signin']);
-    }
+    
   }
 
 
