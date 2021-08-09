@@ -15,4 +15,11 @@ export class AuthStateService {
   setAuthState(value: boolean){
     this.userState.next(value);
   }
+
+  isLoggedIn(){
+    if(localStorage.getItem("isLoggedin") == "true"){
+      return true;
+    }
+    return false;
+  }
 }

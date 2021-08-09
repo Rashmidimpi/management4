@@ -44,10 +44,10 @@ export class EditproductComponent implements OnInit {
     let apidata = {
       id:id
     }
-    let url = 'product';
-    this.apiService.postrequest(url, apidata).subscribe(response => {
+  
+    this.apiService.getrequest('product/'+id).subscribe(response => {
       console.log(response);
-      this.createForm(response[0]);
+      this.createForm(response);
       this.detailsloaded = true;
       this.isEditable = false;
       
@@ -72,14 +72,11 @@ export class EditproductComponent implements OnInit {
 
   onSubmit(){
     console.log(this.editproductform.value);
-    let data = {
-      id: this.id,
-      
-    };
-    this.apiService.updaterequest('product/', this.id, data).subscribe(
-      (data) => {
-        // alert("user updated");
+   
+    this.apiService.updaterequest('product/', this.id, this.editproductform.value).subscribe(
+      (response) => {
         this.openSwal('data updated', 'success');
+        this.router.navigate(['/products']);
       },
       (error) => {
         console.log(error);

@@ -26,11 +26,11 @@
       "price": 100
     },
     {
+      "id": 2,
       "product_name": "Milkybar",
       "seller": "Amazon",
       "description": "Chocolate",
-      "price": "200.00",
-      "id": 2
+      "price": "200"
     },
     {
       "product_name": "Shoes",
